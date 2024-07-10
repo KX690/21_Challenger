@@ -1,4 +1,4 @@
-
+from collections import deque
 visitados =set()
 
 
@@ -11,19 +11,21 @@ grafo = {
     4: [1,2]
 }
 
-# Función para realizar el recorrido DFS
-def bfs(grafo, nodo_inicial,visitados):
+# Función para realizar el recorrido BFS
+def bfs(grafo, nodo_inicial):
+    cola = deque([nodo_inicial])
     visitados.add(nodo_inicial)
     
-    print(nodo_inicial, end=' ')
-    
-    for vecino in grafo[nodo_inicial]:
+    while cola:
+        nodo = cola.popleft()
+        print(nodo, end=' ')
         
-        if vecino not in visitados:
-            
-            bfs(grafo, vecino, visitados)
-
+        for vecino in grafo[nodo]:
+            if vecino not in visitados:
+                visitados.add(vecino)
+                cola.append(vecino)
+                
 # Realizar el recorrido DFS
-print("Recorrido DFS del grafo comenzando desde el nodo 0:")
+print("Recorrido bFS del grafo comenzando desde el nodo 0:")
 bfs(grafo, 0,visitados)
 print()
