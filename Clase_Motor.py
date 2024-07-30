@@ -15,6 +15,7 @@ class Auto:
     def describir_auto(self):
         return f"Es de la marca {self.marca}, y modelo {self.modelo}, {self.motor.describir()}"
 
+#Introducir datos
 motor = Motor(input("Introduzca el tipo de motor"), int(input("Introduzca la potencia del motor")))
 auto = Auto("Toyota", "Izusu", motor)
 print(auto.describir_auto())
